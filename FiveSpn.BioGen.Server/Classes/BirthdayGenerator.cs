@@ -3,7 +3,7 @@ using FiveSpnAiInteractServer.Classes;
 
 namespace FiveSpn.BioGen.Server.Classes
 {
-    public static class AiRandomBirthdayGenerator
+    public static class BirthdayGenerator
     {
         public static DateTime GetRandomAdultBirthday()
         {

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace FiveSpn.BioGen.Server.Classes
 {
-    public static class NameManager
+    public static class NameGenerator
     {
         private static List<String> _femaleFirstNames;
         private static int _femaleFirstNameCount = 0;
@@ -16,33 +16,54 @@ namespace FiveSpn.BioGen.Server.Classes
         private static List<String> _surNames;
         private static int _surNameCount = 0;
 
-        public static void GenerateNameLists()
+        public static bool PopulateOptions(out string result)
         {
             try
             {
-                string resourceDirectory = API.GetResourcePath(API.GetCurrentResourceName());
-                _femaleFirstNames = JsonConvert.DeserializeObject<List<String>>(File.ReadAllText(resourceDirectory + "/Names/names_f_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json"));
+                var nameDirectory = API.GetResourcePath(API.GetCurrentResourceName()) + "/Names/";
+                if (!Directory.Exists(nameDirectory))
+                {
+                    result = "Cannot locate Names directory!";
+                    return false;
+                }
+                string femaleFile = "names_f_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json";
+                string maleFile = "names_m_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json";
+                string surFile = "names_s_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json";
+                if (!File.Exists(nameDirectory + femaleFile) || !File.Exists(nameDirectory + maleFile) || !File.Exists(nameDirectory + surFile))
+                {
+                    if (!File.Exists(nameDirectory + femaleFile))
+                    {
+                        result = "Cannot locate name file:"+ nameDirectory + femaleFile;
+                        return false;
+                    }
+                    if (!File.Exists(nameDirectory + maleFile))
+                    {
+                        result = "Cannot locate name file:"+ nameDirectory + maleFile;
+                        return false;
+                    }
+                    if (!File.Exists(nameDirectory + surFile))
+                    {
+                        result = "Cannot locate name file:"+ nameDirectory + surFile;
+                        return false;
+                    }
+                }
+                _femaleFirstNames = JsonConvert.DeserializeObject<List<String>>(File.ReadAllText(nameDirectory + femaleFile));
                 if (_femaleFirstNames != null) _femaleFirstNameCount = _femaleFirstNames.Count;
-                _maleFirstNames = JsonConvert.DeserializeObject<List<String> >(File.ReadAllText(resourceDirectory + "/Names/names_m_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json"));
+                _maleFirstNames = JsonConvert.DeserializeObject<List<String> >(File.ReadAllText(nameDirectory + maleFile));
                 if (_maleFirstNames != null) _maleFirstNameCount = _maleFirstNames.Count;
-                _surNames = JsonConvert.DeserializeObject<List<String> >(File.ReadAllText(resourceDirectory + "/Names/names_s_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json"));
+                _surNames = JsonConvert.DeserializeObject<List<String> >(File.ReadAllText(nameDirectory + surFile));
                 if (_surNames != null) _surNameCount = _surNames.Count;
-                
-                Console.WriteLine("FiveSPN-AiInteract: Today's random names are loading!");
-                Console.WriteLine("FiveSPN-AiInteract: Total female names loaded = " + _femaleFirstNameCount);
-                Console.WriteLine("FiveSPN-AiInteract: Total male names loaded = " + _maleFirstNameCount);
-                Console.WriteLine("FiveSPN-AiInteract: Total last names loaded = " + _surNameCount);
-                Console.WriteLine("FiveSPN-AiInteract: Total female possibilities = " + (long)_femaleFirstNameCount * (long)_surNameCount);
-                Console.WriteLine("FiveSPN-AiInteract: Total male possibilities = " + (long)_maleFirstNameCount * (long)_surNameCount);
-                Console.WriteLine("FiveSPN-AiInteract: Name generation complete.");
+                result = "Success";
+                return true;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                result = "Critical error attempting to get names!\n"+e.Message;
+                return false;
             }
         }
 
-        public static string GetAiFirstName(bool male)
+        public static string GetFirstName(bool male)
         {
             if (male)
             {
@@ -61,13 +82,23 @@ namespace FiveSpn.BioGen.Server.Classes
             return male ? "John" : "Jane";
         }
 
-        public static string GetAiSurname()
+        public static string GetSurname()
         {
             if (_surNameCount != 0)
             {
                 return _surNames[GlobalRandom.GetRandomNumberInRange(0, _surNameCount-1)];
             }
             return "Doe";
+        }
+
+        public static string GetVariationsStringA()
+        {
+            return "There are a total of " + _femaleFirstNameCount + " feminine names, " + _maleFirstNameCount + " masculine names, and " + _surNameCount + " last names available for this session!";
+        }
+        
+        public static string GetVariationsStringB()
+        {
+            return "There are a total of " + (_femaleFirstNameCount * _surNameCount) + " feminine name combinations and " + (_maleFirstNameCount * _surNameCount) + " masculine name combinations available for this session!";
         }
     }
 }

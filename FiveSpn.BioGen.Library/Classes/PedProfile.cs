@@ -2,7 +2,7 @@
 
 namespace FiveSpn.BioGen.Library.Classes
 {
-    public class GeneratedProfile
+    public class PedProfile
     {
         public string FirstName;
         public string LastName;
@@ -12,7 +12,7 @@ namespace FiveSpn.BioGen.Library.Classes
         public DateTime VehicleRegistrationExpiration;
         public DateTime VehicleInsuranceExpiration;
 
-        // public GeneratedProfile(bool gender)
+        // public PedProfile(bool gender)
         // {
         //     FirstName = AiRandomNameManager.GetAiFirstName(gender);
         //     LastName = AiRandomNameManager.GetAiSurname();
@@ -23,7 +23,7 @@ namespace FiveSpn.BioGen.Library.Classes
         //     VehicleInsuranceExpiration = DateTime.UtcNow;
         // }
         //
-        // public GeneratedProfile(bool gender, int vehicleNetId)
+        // public PedProfile(bool gender, int vehicleNetId)
         // {
         //     FirstName = AiRandomNameManager.GetAiFirstName(gender);
         //     LastName = AiRandomNameManager.GetAiSurname();
