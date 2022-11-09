@@ -32,7 +32,6 @@ namespace FiveSpn.BioGen.Server
         
         private static void ClientGetName([FromSource] Player player, bool masculine)
         {
-            Console.WriteLine("Fired");
             TriggerClientEvent(player, "FiveSPN-BioGen-ClientGetName", NameGenerator.Instance.GetFirstName(masculine), NameGenerator.Instance.GetSurname());
         }
         

@@ -80,7 +80,3 @@ Source data for random name generation is collected from the 1883-2000 U.S. Cens
 This software references the CitizenFX.Core.Server and CitizenFX.Core.Client nuget packages (c) 2017-2020 the CitizenFX Collective used under [license](https://github.com/citizenfx/fivem/blob/master/code/LICENSE) and under the [FiveM Service Agreement](https://fivem.net/terms)
 
 Never heard of FiveM? Learn more about the CitizenFX FiveM project [here](https://fivem.net/)
-
-## Credits
-* <b>Sloosecannon</b> for inspiration and rubber ducky assistance during the initial conception of all this in 2020.
-* <b>AGHMatti</b> I think... for reference on the http helper, really wish I could locate the source repo now.
