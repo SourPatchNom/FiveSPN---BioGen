@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Server", "FiveSpn.BioGen.Server\FiveSpn.BioGen.Server.csproj", "{6D985AC2-6036-4261-A51B-3DC14BD3F8EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Test.Client", "FiveSpn.BioGen.Test.Client\FiveSpn.BioGen.Test.Client.csproj", "{C842754C-6B6D-432C-BB73-029B7B2833DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Test.Server", "FiveSpn.BioGen.Test.Server\FiveSpn.BioGen.Test.Server.csproj", "{5BE4E589-3328-4ED5-BE4F-2E7EF18564A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{6D985AC2-6036-4261-A51B-3DC14BD3F8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D985AC2-6036-4261-A51B-3DC14BD3F8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D985AC2-6036-4261-A51B-3DC14BD3F8EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C842754C-6B6D-432C-BB73-029B7B2833DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C842754C-6B6D-432C-BB73-029B7B2833DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C842754C-6B6D-432C-BB73-029B7B2833DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C842754C-6B6D-432C-BB73-029B7B2833DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BE4E589-3328-4ED5-BE4F-2E7EF18564A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BE4E589-3328-4ED5-BE4F-2E7EF18564A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BE4E589-3328-4ED5-BE4F-2E7EF18564A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BE4E589-3328-4ED5-BE4F-2E7EF18564A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
