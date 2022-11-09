@@ -27,14 +27,45 @@ Client based request - receive event handlers examples:
 Client based request - event triggers examples:
 ```csharp
     TriggerServerEvent("FiveSPN-BioGen-ClientGetName", true);
-    TriggerServerEvent("FiveSPN-BioGen-ClientGetName", false);
-    TriggerServerEvent("FiveSPN-BioGen-ClientGetDob");
     TriggerServerEvent("FiveSPN-BioGen-ClientGetDob");
     TriggerServerEvent("FiveSPN-BioGen-ClientGetAll", true);
-    TriggerServerEvent("FiveSPN-BioGen-ClientGetAll", false);
 ```
 
-Client based request - example output:
+Server based request - receive event handlers examples:
+```csharp
+    EventHandlers["FiveSPN-BioGen-RxName"] += new Action<string, string, string>(ClientRxName);
+    EventHandlers["FiveSPN-BioGen-RxDob"] += new Action<string, string>(ClientRxDob);
+    EventHandlers["FiveSPN-BioGen-RxAll"] += new Action<string, string, string, string, bool>(ClientRxAll);
+    
+    private void ClientRxName(string target, string arg1, string arg2)
+    {
+        if (target != API.GetCurrentResourceName()) return;
+        Debug.WriteLine("Received Name: "+arg1+" "+arg2);
+    }
+    
+    private void ClientRxDob(string target, string dateString)
+    {
+        if (target != API.GetCurrentResourceName()) return;
+        var date = DateTime.Parse(dateString);
+        Debug.WriteLine("Received DOB: "+ date.Date.ToString("d"));
+    }
+    
+    private void ClientRxAll(string target, string arg1, string arg2, string dateString, bool arg4)
+    {
+        if (target != API.GetCurrentResourceName()) return;
+        var date = DateTime.Parse(dateString);
+        Debug.WriteLine("Received All: "+ arg1 +" "+ arg2+" "+ date.Date.ToString("d") + " " + (arg4?"Male":"Female"));
+    }
+```
+
+Server based request - event triggers examples:
+```csharp
+    TriggerEvent("FiveSPN-BioGen-TxName", API.GetCurrentResourceName(), true);
+    TriggerEvent("FiveSPN-BioGen-TxDob", API.GetCurrentResourceName());
+    TriggerEvent("FiveSPN-BioGen-TxProfile", API.GetCurrentResourceName(), true);
+```
+
+Sample output:
 ```text
 Received Name: Leland Laico
 Received Name: Joella Nanneman
