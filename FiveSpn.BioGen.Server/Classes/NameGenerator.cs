@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using System.IO;
 using CitizenFX.Core.Native;
-using FiveSpnAiInteractServer.Classes;
 using Newtonsoft.Json;
 
 namespace FiveSpn.BioGen.Server.Classes
 {
-    public static class NameGenerator
+    public class NameGenerator
     {
-        private static List<String> _femaleFirstNames;
-        private static int _femaleFirstNameCount = 0;
-        private static List<String> _maleFirstNames;
-        private static int _maleFirstNameCount = 0;
-        private static List<String> _surNames;
-        private static int _surNameCount = 0;
+        private static readonly Lazy<NameGenerator> instance = new Lazy<NameGenerator>(() => new NameGenerator());
+        private NameGenerator(){}
+        public static NameGenerator Instance => instance.Value;
+        
+        
+        private List<String> _femaleFirstNames;
+        private int _femaleFirstNameCount = 0;
+        private List<String> _maleFirstNames;
+        private int _maleFirstNameCount = 0;
+        private List<String> _surNames;
+        private int _surNameCount = 0;
 
-        public static bool PopulateOptions(out string result)
+        public bool PopulateOptions(out string result)
         {
             try
             {
@@ -63,7 +67,7 @@ namespace FiveSpn.BioGen.Server.Classes
             }
         }
 
-        public static string GetFirstName(bool male)
+        public string GetFirstName(bool male)
         {
             if (male)
             {
@@ -82,7 +86,7 @@ namespace FiveSpn.BioGen.Server.Classes
             return male ? "John" : "Jane";
         }
 
-        public static string GetSurname()
+        public string GetSurname()
         {
             if (_surNameCount != 0)
             {
@@ -91,12 +95,12 @@ namespace FiveSpn.BioGen.Server.Classes
             return "Doe";
         }
 
-        public static string GetVariationsStringA()
+        public string GetVariationsStringA()
         {
             return "There are a total of " + _femaleFirstNameCount + " feminine names, " + _maleFirstNameCount + " masculine names, and " + _surNameCount + " last names available for this session!";
         }
         
-        public static string GetVariationsStringB()
+        public string GetVariationsStringB()
         {
             return "There are a total of " + (_femaleFirstNameCount * _surNameCount) + " feminine name combinations and " + (_maleFirstNameCount * _surNameCount) + " masculine name combinations available for this session!";
         }

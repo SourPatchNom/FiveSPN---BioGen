@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FiveSpnAiInteractServer.Classes
+namespace FiveSpn.BioGen.Server.Classes
 {
     public class GlobalRandom
     {

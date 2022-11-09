@@ -1,5 +1,4 @@
 ﻿using System;
-using FiveSpnAiInteractServer.Classes;
 
 namespace FiveSpn.BioGen.Server.Classes
 {

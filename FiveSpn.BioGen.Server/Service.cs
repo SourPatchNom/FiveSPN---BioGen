@@ -10,14 +10,16 @@ namespace FiveSpn.BioGen.Server
         public Service()
         {
             TriggerEvent("FiveSPN-LogToServer", API.GetCurrentResourceName(),3,"Initializing!");
+            
             TriggerEvent("FiveSPN-LogToDiscord", true, API.GetCurrentResourceName(),"The Bio Generator is booting.");
-            if (!NameGenerator.PopulateOptions(out string getNamesResult))
+            if (!NameGenerator.Instance.PopulateOptions(out string getNamesResult))
             {
                 TriggerEvent("FiveSPN-LogToServer", API.GetCurrentResourceName(), 0,getNamesResult);
                 return;
             }
-            TriggerEvent("FiveSPN-LogToDiscord", true, API.GetCurrentResourceName(), NameGenerator.GetVariationsStringA());    
-            TriggerEvent("FiveSPN-LogToDiscord", true, API.GetCurrentResourceName(), NameGenerator.GetVariationsStringB());
+            TriggerEvent("FiveSPN-LogToDiscord", true, API.GetCurrentResourceName(), NameGenerator.Instance.GetVariationsStringA());    
+            TriggerEvent("FiveSPN-LogToDiscord", true, API.GetCurrentResourceName(), NameGenerator.Instance.GetVariationsStringB());
+            
             EventHandlers["FiveSPN-BioGen-GetName"] += new Action<Player, bool>(ClientGetName);
             EventHandlers["FiveSPN-BioGen-GetDob"] += new Action<Player>(ClientGetDob);
             EventHandlers["FiveSPN-BioGen-GetProfile"] += new Action<Player, bool>(ClientGetProfile);
@@ -25,7 +27,7 @@ namespace FiveSpn.BioGen.Server
         
         private static void ClientGetName([FromSource] Player player, bool masculine)
         {
-            TriggerClientEvent(player, "FiveSPN-BioGen-GetName", NameGenerator.GetFirstName(masculine), NameGenerator.GetSurname());
+            TriggerClientEvent(player, "FiveSPN-BioGen-GetName", NameGenerator.Instance.GetFirstName(masculine), NameGenerator.Instance.GetSurname());
         }
         
         private void ClientGetDob([FromSource] Player player)
@@ -35,7 +37,7 @@ namespace FiveSpn.BioGen.Server
         
         private void ClientGetProfile([FromSource] Player player, bool masculine)
         {
-            throw new NotImplementedException();
+            TriggerClientEvent(player, "FiveSPN-BioGen-GetName", NameGenerator.Instance.GetFirstName(masculine), NameGenerator.Instance.GetSurname(), BirthdayGenerator.GetRandomAdultBirthday(), masculine);
         }
 
 
