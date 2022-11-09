@@ -1,5 +1,7 @@
 # FiveSPN-BioGen
 
+![FiveSPN-BioGen Banner](https://cdn.discordapp.com/attachments/1038915355579519117/1039930485331210410/fivespnbiogen.png)
+
 FiveSPN-BioGen is a FiveM resource for generating random names and dates of birth for online server gameplay. These names can be used to quickly create personas for role-players or to generate information given to game AI.
 FiveSPN-Persona and FiveSPN-Ai use this resource. 
 
