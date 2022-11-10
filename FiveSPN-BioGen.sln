@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Server", "FiveSpn.BioGen.Server\FiveSpn.BioGen.Server.csproj", "{6D985AC2-6036-4261-A51B-3DC14BD3F8EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Server", "src\FiveSpn.BioGen.Server\FiveSpn.BioGen.Server.csproj", "{6D985AC2-6036-4261-A51B-3DC14BD3F8EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Test.Client", "FiveSpn.BioGen.Test.Client\FiveSpn.BioGen.Test.Client.csproj", "{C842754C-6B6D-432C-BB73-029B7B2833DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Test.Client", "test\FiveSpn.BioGen.Test.Client\FiveSpn.BioGen.Test.Client.csproj", "{C842754C-6B6D-432C-BB73-029B7B2833DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Test.Server", "FiveSpn.BioGen.Test.Server\FiveSpn.BioGen.Test.Server.csproj", "{5BE4E589-3328-4ED5-BE4F-2E7EF18564A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveSpn.BioGen.Test.Server", "test\FiveSpn.BioGen.Test.Server\FiveSpn.BioGen.Test.Server.csproj", "{5BE4E589-3328-4ED5-BE4F-2E7EF18564A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
