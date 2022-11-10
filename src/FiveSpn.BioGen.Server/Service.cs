@@ -45,13 +45,13 @@ namespace FiveSpn.BioGen.Server
         private void ClientGetDob([FromSource] Player player)
         {
             if (_verboseLogging) TriggerEvent("FiveSPN-LogToServer", API.GetCurrentResourceName(), 5, player.Name + " requested a new dob!");
-            TriggerClientEvent(player, "FiveSPN-BioGen-ClientGetDob", BirthdayGenerator.GetRandomAdultBirthday().ToString(CultureInfo.CurrentCulture));
+            TriggerClientEvent(player, "FiveSPN-BioGen-ClientGetDob", BirthdayGenerator.GetRandomAdultBirthday().ToString(CultureInfo.InvariantCulture));
         }
         
         private void ClientGetAll([FromSource] Player player, bool masculine)
         {
             if (_verboseLogging) TriggerEvent("FiveSPN-LogToServer", API.GetCurrentResourceName(), 5, player.Name + " requested a new profile!");
-            TriggerClientEvent(player, "FiveSPN-BioGen-ClientGetAll", NameGenerator.Instance.GetFirstName(masculine), NameGenerator.Instance.GetSurname(), BirthdayGenerator.GetRandomAdultBirthday().ToString(CultureInfo.CurrentCulture), masculine);
+            TriggerClientEvent(player, "FiveSPN-BioGen-ClientGetAll", NameGenerator.Instance.GetFirstName(masculine), NameGenerator.Instance.GetSurname(), BirthdayGenerator.GetRandomAdultBirthday().ToString(CultureInfo.InvariantCulture), masculine);
         }
         
         private void ServerGetName(string source, bool masculine)
@@ -63,13 +63,13 @@ namespace FiveSpn.BioGen.Server
         private void ServerGetDob(string source)
         {
             if (_verboseLogging) TriggerEvent("FiveSPN-LogToServer", API.GetCurrentResourceName(), 5, source + " requested a new dob!");
-            TriggerEvent( "FiveSPN-BioGen-RxDob", source, BirthdayGenerator.GetRandomAdultBirthday().ToString(CultureInfo.CurrentCulture));
+            TriggerEvent( "FiveSPN-BioGen-RxDob", source, BirthdayGenerator.GetRandomAdultBirthday().ToString(CultureInfo.InvariantCulture));
         }
         
         private void ServerGetAll(string source, bool masculine)
         {
             if (_verboseLogging) TriggerEvent("FiveSPN-LogToServer", API.GetCurrentResourceName(), 5, source + " requested a new profile!");
-            TriggerEvent("FiveSPN-BioGen-RxAll", source, NameGenerator.Instance.GetFirstName(masculine), NameGenerator.Instance.GetSurname(), BirthdayGenerator.GetRandomAdultBirthday().ToString(CultureInfo.CurrentCulture), masculine);
+            TriggerEvent("FiveSPN-BioGen-RxAll", source, NameGenerator.Instance.GetFirstName(masculine), NameGenerator.Instance.GetSurname(), BirthdayGenerator.GetRandomAdultBirthday().ToString(CultureInfo.InvariantCulture), masculine);
         }
 
 
