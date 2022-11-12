@@ -10,7 +10,7 @@ namespace FiveSpn.BioGen.Server.Classes
             var old = new DateTime(utcNow.Year - 65, utcNow.Month, utcNow.Day);
             var young = new DateTime(utcNow.Year - 18, utcNow.Month, utcNow.Day);
             var maxDaysToAdd = (utcNow.Date - old).Days - (utcNow.Date - young).Days;
-            return old.AddDays(GlobalRandom.GetRandomNumberInRange(0, maxDaysToAdd));
+            return old.AddDays(ConcurrentRandom.GetRandomNumberInRange(0, maxDaysToAdd));
         }
         
     }
