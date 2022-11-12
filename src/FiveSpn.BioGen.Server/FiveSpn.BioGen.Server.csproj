@@ -11,6 +11,7 @@
         <AssemblyName>FiveSpn.BioGen.Server.net</AssemblyName>
         <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,8 +46,8 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Classes\BirthdayGenerator.cs" />
+        <Compile Include="Classes\ConcurrentRandom.cs" />
         <Compile Include="Classes\NameGenerator.cs" />
-        <Compile Include="Classes\GlobalRandom.cs" />
         <Compile Include="Service.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

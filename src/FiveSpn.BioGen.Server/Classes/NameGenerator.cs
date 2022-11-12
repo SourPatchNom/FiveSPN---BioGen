@@ -30,9 +30,9 @@ namespace FiveSpn.BioGen.Server.Classes
                     result = "Cannot locate Names directory!";
                     return false;
                 }
-                string femaleFile = "names_f_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json";
-                string maleFile = "names_m_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json";
-                string surFile = "names_s_" + GlobalRandom.GetRandomNumberInRange(0, 9) + ".json";
+                string femaleFile = "names_f_" + ConcurrentRandom.GetRandomNumberInRange(0, 9) + ".json";
+                string maleFile = "names_m_" + ConcurrentRandom.GetRandomNumberInRange(0, 9) + ".json";
+                string surFile = "names_s_" + ConcurrentRandom.GetRandomNumberInRange(0, 9) + ".json";
                 if (!File.Exists(nameDirectory + femaleFile) || !File.Exists(nameDirectory + maleFile) || !File.Exists(nameDirectory + surFile))
                 {
                     if (!File.Exists(nameDirectory + femaleFile))
@@ -73,14 +73,14 @@ namespace FiveSpn.BioGen.Server.Classes
             {
                 if (_maleFirstNameCount != 0)
                 {
-                    return _maleFirstNames[GlobalRandom.GetRandomNumberInRange(0, _maleFirstNameCount-1)];
+                    return _maleFirstNames[ConcurrentRandom.GetRandomNumberInRange(0, _maleFirstNameCount-1)];
                 }
             }
             else
             {
                 if (_femaleFirstNameCount != 0)
                 {
-                    return _femaleFirstNames[GlobalRandom.GetRandomNumberInRange(0, _femaleFirstNameCount-1)];
+                    return _femaleFirstNames[ConcurrentRandom.GetRandomNumberInRange(0, _femaleFirstNameCount-1)];
                 }
             }
             return male ? "John" : "Jane";
@@ -90,7 +90,7 @@ namespace FiveSpn.BioGen.Server.Classes
         {
             if (_surNameCount != 0)
             {
-                return _surNames[GlobalRandom.GetRandomNumberInRange(0, _surNameCount-1)];
+                return _surNames[ConcurrentRandom.GetRandomNumberInRange(0, _surNameCount-1)];
             }
             return "Doe";
         }
